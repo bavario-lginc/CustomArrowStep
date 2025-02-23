@@ -1,0 +1,16 @@
+{
+    "Name": "Custom Arrow Platform",
+    "Author": "Bavario",
+    "Description": "The arrow platform from Hazy Maze Cave in Super Mario 64. It can be customized to have any amount of arrows facing any direction.",
+    "ModuleData" : [
+      {
+        "ProductMapObj" : [
+          {
+            "Name" : "CustomArrowStep",
+            "Function" : "createExtActor<CustomArrowStep>",
+            "Include" : "CustomArrowStep.h"
+          }
+        ]
+      }
+    ]
+}
