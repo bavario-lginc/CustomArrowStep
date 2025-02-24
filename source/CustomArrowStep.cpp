@@ -1,7 +1,6 @@
 #include "CustomArrowStep.h"
 
 CustomArrowStep::CustomArrowStep (const char *pName) : LiveActor(pName) {
-    OSReport("Helo\n");
     mSpeed = 5.0f;
     mArrowAmount = 4;
 }
@@ -10,7 +9,6 @@ CustomArrowStep::~CustomArrowStep () {
 }
 
 void CustomArrowStep::init (const JMapInfoIter &rIter) {
-    OSReport("We are ze custom\n");
     MR::initDefaultPos(this, rIter);
     MR::processInitFunction(this, rIter, false);
     MR::connectToSceneMapObj(this);
@@ -78,7 +76,6 @@ void CustomArrowStep::setDirection (HitSensor *pDirectionSensor) {
             MR::calcFrontVec(&frontVec, mArrows[i]);
             setDirection(frontVec);
             mCurrentArrowName = mArrows[i]->mLinkedJointName;
-            OSReport("Interacting with %s\n", mCurrentArrowName);
         } else 
             MR::startAction(mArrows[i], "Inactive");
     }
@@ -94,10 +91,8 @@ void CustomArrowStep::stopMove () {
 
 void CustomArrowStep::exeDisabled () {
     if (MR::isFirstStep(this)) 
-        for (s32 i = 0; i < mArrowAmount; i++) {
-            OSReport("%x\n", mArrows[i]);
+        for (s32 i = 0; i < mArrowAmount; i++) 
             MR::startAction(mArrows[i], "Disabled");
-        }
 }
 
 namespace NrvCustomArrowStep {
